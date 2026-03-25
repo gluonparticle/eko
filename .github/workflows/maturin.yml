@@ -8,19 +8,17 @@ on:
 
 permissions:
   contents: read
+  id-token: write
 
 jobs:
   linux:
-    runs-on: ${{ matrix.platform.runner }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         platform:
-          - runner: ubuntu-latest
-            target: x86_64
-          - runner: ubuntu-latest
-            target: x86
-          - runner: ubuntu-latest
-            target: aarch64
+          - { runner: ubuntu-latest, target: x86_64 }
+          - { runner: ubuntu-latest, target: x86 }
+          - { runner: ubuntu-latest, target: aarch64 }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -32,7 +30,6 @@ jobs:
           target: ${{ matrix.platform.target }}
           args: --release --out dist --find-interpreter -m crates/eko/Cargo.toml
           sccache: "true"
-          manylinux: auto
       - name: Upload wheels
         uses: actions/upload-artifact@v4
         with:
@@ -40,14 +37,12 @@ jobs:
           path: dist
 
   windows:
-    runs-on: ${{ matrix.platform.runner }}
+    runs-on: windows-latest
     strategy:
       matrix:
         platform:
-          - runner: windows-latest
-            target: x64
-          - runner: windows-latest
-            target: x86
+          - { runner: windows-latest, target: x64 }
+          - { runner: windows-latest, target: x86 }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -71,10 +66,8 @@ jobs:
     strategy:
       matrix:
         platform:
-          - runner: macos-latest
-            target: x86_64
-          - runner: macos-14
-            target: aarch64
+          - { runner: macos-latest, target: x86_64 }
+          - { runner: macos-14, target: aarch64 }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
