@@ -18,5 +18,5 @@ edition = "2021"
 keywords = ["physics"]
 license = "GPL-3.0-or-later"
 repository = "https://github.com/NNPDF/eko"
-rust-version = "1.70.0"
-version = "0.0.1"
+rust-version = "1.70"
+version = "99.9.9"

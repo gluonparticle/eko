@@ -3,8 +3,8 @@ requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
 build-backend = "poetry_dynamic_versioning.backend"
 
 [tool.poetry]
-name = "eko"
-version = "0.0.0"
+name = "eko-gluonparticle"
+version = "99.9.9"
 description = "Evolution Kernel Operators"
 readme = "README.md"
 authors = [

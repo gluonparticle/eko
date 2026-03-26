@@ -1,5 +1,5 @@
 [package]
-name = "eko"
+name = "eko-gluonparticle"
 
 authors.workspace = true
 description.workspace = true
@@ -21,4 +21,4 @@ crate-type = ["cdylib"]
 
 [dependencies]
 num = "0.4.1"
-ekore = { path = "../ekore", version = "0.0.1" }
+ekore = { path = "../ekore", version = "99.9.9" }
